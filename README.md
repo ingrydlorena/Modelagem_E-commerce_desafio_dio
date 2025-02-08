@@ -12,9 +12,10 @@
 ![image](https://github.com/user-attachments/assets/3b6bfda0-5cbb-420b-a801-aa4ee6fd9abc)
 
    
-Na minha modelagem optei por criar duas entidades tanto para o CNPJ quanto para o CPF e o cliente poderia está ligado a somente uma delas. Também criei uma entidade para selecionar a formas de pagamentos onde geraria uma foreingh key no pedido. E por fim criei também a entidade entrega com os atributos necessarios que seriam refletidos no pedido.
+Na minha modelagem, optei por criar duas entidades separadas para CNPJ e CPF, garantindo que o cliente estivesse vinculado a apenas uma delas. Também criei uma entidade para as formas de pagamento, gerando uma chave estrangeira na tabela de pedidos. Por fim, adicionei a entidade Entrega, com os atributos necessários que são refletidos nos pedidos.
 
-Esse foi um ótimo desafio que me fez refletir muito em como conectar e tornar as entidades o mais fiel possivel para o posterior momento de desenvolvimento. 
+Esse foi um ótimo desafio, que me fez refletir bastante sobre como conectar as entidades de forma lógica e consistente, garantindo uma estrutura fiel para o desenvolvimento posterior.
 
-#### Estou aberta a dicas de como tornar minha modelagem melhor!
+### Estou aberta a sugestões de como aprimorar ainda mais minha modelagem!
+
    
