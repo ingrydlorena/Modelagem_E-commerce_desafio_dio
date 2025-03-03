@@ -18,4 +18,11 @@ Esse foi um ótimo desafio, que me fez refletir bastante sobre como conectar as 
 
 ### Estou aberta a sugestões de como aprimorar ainda mais minha modelagem!
 
+# Segunda Parte do Projeto
+### Construindo seu primeiro projeto lógico de banco de dados
+O desafio consistia em replicar a estrutura apresentada pela professora, adicionando melhorias e personalizações. Fiz ajustes recomendados, refinando o modelo inicial ao remover redundâncias e aprimorar o fluxo dos dados. O foco do projeto é um sistema de dropshipping, onde o cliente compra de um vendedor, mas a entrega é feita pelo fornecedor.
+
+Para otimizar análises, criei consultas SQL que permitem calcular o total vendido por vendedor, identificar vendedores que também são fornecedores, contar pedidos por forma de pagamento e listar a relação entre produtos, fornecedores e estoques.
+
+### Ainda há pontos para melhorar, como o controle automático de reposição de estoque, relatórios gerenciais para análise de vendas e um rastreamento mais detalhado das entregas. O projeto segue em evolução para tornar o sistema mais eficiente.
    
