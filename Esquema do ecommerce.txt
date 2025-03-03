@@ -1,0 +1,180 @@
+-- Criação do banco de dados (e-commerce)
+create database ecommerce;
+use ecommerce;
+
+
+-- criar tabela cnpj
+create table cnpj(
+	idcnpj int auto_increment primary key,
+    cnpj char(14) not null,
+    inscricao_estadual varchar(12) unique,
+    razao_social varchar(100) not null,
+    telefone varchar(14) not null,
+    email varchar(70) not null,
+    data_criacao datetime not null default current_timestamp,
+    rua varchar(30) not null,
+    bairro varchar(40) not null,
+    cidade varchar(50),
+    numero int not null,
+    cep char(8) not null,
+    
+    
+    constraint unique_cnpj_cliente unique (cnpj)
+    );
+
+-- criar tabela cpf
+create table cpf(
+	idcpf int auto_increment primary key,
+    cpf char(11) not null,
+    p_nome varchar(20) not null,
+    sobrenome varchar(30),
+    telefone varchar(14) not null,
+    email varchar(70) not null,
+    data_criacao datetime not null default current_timestamp,
+    rua varchar(30) not null,
+    bairro varchar(40) not null,
+    cidade varchar(50),
+    numero int not null,
+    cep char(8) not null,
+    
+    
+    constraint unique_cpf_cliente unique (cpf)
+    );
+
+
+-- criar tabela produto
+create table produto(
+	idproduto int auto_increment primary key,
+    idvendedor int,
+    categoria enum('Limpeza','Decoração','Eletrodomestico','Iluminação','Roupa','Sapato','Bijoterias','Kids') not null,
+    descricao varchar(100),
+    avaliacao decimal(3,2) default 0,
+    valor decimal(10,2) not null,
+    
+    constraint fk_vendedor foreign key (idvendedor) references vendedor_externo(idvendedor) on delete cascade on update cascade
+    );
+    
+
+-- criar vendedor
+create table vendedor_externo(
+	idvendedor int auto_increment primary key,
+    idcnpj int unique not null,
+
+    constraint fk_cnpj foreign key (idcnpj) references cnpj(idcnpj) on delete cascade on update cascade
+    );
+    
+-- criar cliente
+create table cliente(
+	idcliente int auto_increment primary key,
+    idcnpj int null,
+    idcpf int null,
+    idvendedor int not null,
+    
+    constraint fk_cnpj_client foreign key (idcnpj) references cnpj(idcnpj) on delete cascade on update cascade,
+    constraint fk_cpf foreign key (idcpf) references cpf(idcpf) on delete cascade on update cascade,
+    constraint fk_vendedor_client foreign key (idvendedor) references vendedor_externo(idvendedor) on delete cascade on update cascade
+
+    );
+-- trigger para validar o cnpj ou o cpf
+DELIMITER $$
+
+CREATE TRIGGER validar_cnpj_cpf_cliente
+BEFORE INSERT ON cliente
+FOR EACH ROW
+BEGIN
+    IF (NEW.idcnpj IS NOT NULL AND NEW.idcpf IS NOT NULL) OR 
+       (NEW.idcnpj IS NULL AND NEW.idcpf IS NULL) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'O cliente deve ter apenas um identificador: CNPJ ou CPF.';
+    END IF;
+END $$
+
+DELIMITER ;
+    
+-- criar fornecedor
+create table fornecedor(
+	idfornecedor int auto_increment primary key,
+    idcnpj int not null,
+    
+    constraint fk_cnpj_fornecedor foreign key (idcnpj) references cnpj(idcnpj) on delete cascade on update cascade
+    );
+
+-- criar estoque
+create table estoque(
+	idestoque int auto_increment primary key,
+    idfornecedor int not null,
+    galpao enum('Galpao 1', 'Galpao 2', 'Galpao 3', 'Galpao 4', 'Galpao 5') not null,
+    status_produto enum('Falta', 'Reservado', 'Em estoque') default 'Em estoque',
+    
+
+    constraint fk_fornecedor foreign key (idfornecedor) references fornecedor(idfornecedor) on delete cascade on update cascade
+    );
+    
+-- criar entrega
+create table entrega(
+	identrega int auto_increment primary key,
+    frete decimal(10,2) default 0,
+    codigo_rastreio char(40) not null,
+    status_entrega enum("Entregue", "A caminho", "Perdido")
+);
+
+-- criar pedido
+create table pedido(
+	idpedido int auto_increment primary key,
+    idcliente int,
+    identrega int,
+    data_pedido datetime default current_timestamp,
+    status_pedido enum('Entregue', 'Enviado', 'Cancelado', 'Em aberto')  default 'Em aberto',
+    descricao varchar(100),
+    formas_pagamento enum('Credito', 'Debito', 'Dinheiro', 'PIX', 'Boleto') not null,
+    valor_total decimal(10,2) not null,
+    
+    
+
+    constraint fk_cliente foreign key (idcliente) references cliente(idcliente) on delete cascade on update cascade,
+    constraint fk_entrega foreign key (identrega) references entrega(identrega) on delete cascade on update cascade
+);
+
+    
+-- criar vendedor tem fornecedor (tabela intermediaria)
+create table vendedor_has_fornecedor(
+    idfornecedor int,
+    idvendedor int,
+
+    primary key (idfornecedor, idvendedor),
+    constraint fk_vendedor_fornecedor_intermediaria foreign key (idvendedor) references vendedor_externo(idvendedor) on delete cascade on update cascade,
+    constraint fk_fornecedor_vendedor_intermediaria foreign key (idfornecedor) references fornecedor(idfornecedor) on delete cascade on update cascade
+    );
+
+
+-- criar estoque tem produto (tabela intermediaria)
+create table estoque_has_produto(
+	idfornecedor int,
+    idproduto int,
+    quantidade int not null check (quantidade >= 0) default 1,
+    status_produto enum("Falta","Em estoque") default "Em estoque",
+    galpao enum("Galpão 1","Galpão 2", "Galpão 3"),
+    
+    primary key (idfornecedor, idproduto),
+    constraint fk_produto foreign key (idproduto) references produto(idproduto) on delete cascade on update cascade,
+    constraint fk_fproduto_estoque_intermediaria foreign key (idfornecedor) references fornecedor(idfornecedor) on delete cascade on update cascade
+    );
+    
+-- pedido has produto (tabela intermediaria)alter
+create table pedido_has_produto(
+	idvendedor int,
+    idproduto int,
+    idpedido int,
+    quantidade int not null check (quantidade >= 0) default 1,
+    
+    primary key (idvendedor, idproduto, idpedido),
+    constraint fk_produto_pedido foreign key (idproduto) references produto(idproduto) on delete cascade on update cascade,
+    constraint fk_vendedor_pedido foreign key (idvendedor) references vendedor_externo(idvendedor) on delete cascade on update cascade,
+    constraint fk_pedido foreign key (idpedido) references pedido(idpedido) on delete cascade on update cascade
+    );
+
+
+
+
+
+

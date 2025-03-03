@@ -1,0 +1,196 @@
+-- Adicionando valores a CPF
+INSERT INTO cpf (cpf, p_nome, sobrenome, telefone, email, rua, bairro, cidade, numero, cep) VALUES
+('12345678901', 'Ana', 'Silva', '11999999999', 'ana.silva@example.com', 'Rua das Flores', 'Centro', 'São Paulo', 45, '01001000'),
+('23456789012', 'Carlos', 'Oliveira', '11988888888', 'carlos.oliveira@example.com', 'Av. Paulista', 'Bela Vista', 'São Paulo', 1000, '01311000'),
+('34567890123', 'Fernanda', 'Souza', '21977777777', 'fernanda.souza@example.com', 'Rua do Mercado', 'Centro', 'Rio de Janeiro', 200, '20010000'),
+('45678901234', 'Bruno', 'Costa', '21966666666', 'bruno.costa@example.com', 'Av. Atlântica', 'Copacabana', 'Rio de Janeiro', 500, '22021000'),
+('56789012345', 'Juliana', 'Pereira', '31955555555', 'juliana.pereira@example.com', 'Rua da Liberdade', 'Savassi', 'Belo Horizonte', 120, '30140000'),
+('67890123456', 'Roberta', 'Lima', '31944444444', 'roberta.lima@example.com', 'Av. Afonso Pena', 'Centro', 'Belo Horizonte', 900, '30130140'),
+('78901234567', 'Thiago', 'Almeida', '41933333333', 'thiago.almeida@example.com', 'Rua XV de Novembro', 'Centro', 'Curitiba', 350, '80020010'),
+('89012345678', 'Gabriel', 'Mendes', '41922222222', 'gabriel.mendes@example.com', 'Av. Sete de Setembro', 'Batel', 'Curitiba', 1500, '80230010'),
+('90123456789', 'Carla', 'Rodrigues', '51911111111', 'carla.rodrigues@example.com', 'Rua da Praia', 'Centro', 'Porto Alegre', 180, '90010000'),
+('01234567890', 'Ricardo', 'Martins', '51900000000', 'ricardo.martins@example.com', 'Av. Ipiranga', 'Partenon', 'Porto Alegre', 600, '91530000'),
+('11223344556', 'Luciana', 'Ribeiro', '61999999999', 'luciana.ribeiro@example.com', 'SQS 308', 'Asa Sul', 'Brasília', 10, '70358000'),
+('22334455667', 'Eduardo', 'Santos', '61988888888', 'eduardo.santos@example.com', 'SQS 102', 'Asa Sul', 'Brasília', 5, '70232000'),
+('33445566778', 'Mariana', 'Fernandes', '62977777777', 'mariana.fernandes@example.com', 'Rua 3', 'Setor Bueno', 'Goiânia', 220, '74210030'),
+('44556677889', 'Diego', 'Martins', '62966666666', 'diego.martins@example.com', 'Av. T-9', 'Setor Bueno', 'Goiânia', 800, '74223120'),
+('55667788990', 'Eliana', 'Gomes', '71955555555', 'eliana.gomes@example.com', 'Rua Chile', 'Comércio', 'Salvador', 88, '40020000'),
+('66778899001', 'Vinícius', 'Souza', '71944444444', 'vinicius.souza@example.com', 'Av. Sete de Setembro', 'Barra', 'Salvador', 720, '40140000'),
+('77889900112', 'Paula', 'Alves', '81933333333', 'paula.alves@example.com', 'Rua da Aurora', 'Boa Vista', 'Recife', 150, '50050000'),
+('88990011223', 'Robson', 'Costa', '81922222222', 'robson.costa@example.com', 'Av. Boa Viagem', 'Boa Viagem', 'Recife', 1050, '51020000'),
+('99001122334', 'Letícia', 'Lima', '85911111111', 'leticia.lima@example.com', 'Rua Dragão do Mar', 'Centro', 'Fortaleza', 90, '60060000'),
+('00112233445', 'Marcelo', 'Oliveira', '85900000000', 'marcelo.oliveira@example.com', 'Av. Beira Mar', 'Meireles', 'Fortaleza', 1300, '60165012');
+
+select * from cpf;
+
+-- inserindo dados ao cnpj
+INSERT INTO cnpj (cnpj, inscricao_estadual, razao_social, telefone, email, rua, bairro, cidade, numero, cep) VALUES
+('12345678000101', '123456789012', 'Comercial Silva LTDA', '1140028922', 'contato@silvacomercial.com', 'Rua das Laranjeiras', 'Centro', 'São Paulo', 50, '01010000'),
+('23456789000112', '234567890123', 'Tech Solutions LTDA', '1135559999', 'suporte@techsolutions.com', 'Av. Paulista', 'Bela Vista', 'São Paulo', 1200, '01311000'),
+('34567890000123', '345678901234', 'Alimentos do Brasil S/A', '212223333', 'vendas@alimentosbr.com', 'Rua da Quitanda', 'Centro', 'Rio de Janeiro', 450, '20040000'),
+('45678901000134', '456789012345', 'Construtora Concretiza', '3134445566', 'contato@concretiza.com', 'Av. Amazonas', 'Centro', 'Belo Horizonte', 800, '30110000'),
+('56789012000145', '567890123456', 'Mega Supermercados LTDA', '4133334444', 'sac@megasuper.com', 'Rua XV de Novembro', 'Centro', 'Curitiba', 350, '80020010'),
+('67890123000156', '678901234567', 'Auto Peças Nacional', '5132221111', 'vendas@autonacional.com', 'Av. Ipiranga', 'Partenon', 'Porto Alegre', 900, '91530000'),
+('78901234000167', '789012345678', 'Livraria Cultura LTDA', '6140405050', 'atendimento@livcultura.com', 'SQS 308', 'Asa Sul', 'Brasília', 10, '70358000'),
+('89012345000178', '890123456789', 'Farmácia Saúde Sempre', '7131112222', 'sac@saudesempre.com', 'Rua Chile', 'Comércio', 'Salvador', 88, '40020000'),
+('90123456000189', '901234567890', 'Transportes Rápido Express', '8132213344', 'logistica@rapidoexpress.com', 'Av. Boa Viagem', 'Boa Viagem', 'Recife', 1050, '51020000'),
+('01234567000190', '012345678901', 'Móveis Modernos LTDA', '8530302020', 'contato@moveismodernos.com', 'Rua Dragão do Mar', 'Centro', 'Fortaleza', 90, '60060000'),
+('11223344000101', '112233445566', 'Panificadora Pão Quente', '3133332323', 'atendimento@paoquente.com', 'Rua da Liberdade', 'Savassi', 'Belo Horizonte', 120, '30140000'),
+('22334455000112', '223344556677', 'Roupas & Estilos LTDA', '4144445555', 'sac@roupasestilos.com', 'Rua XV de Novembro', 'Centro', 'Curitiba', 200, '80020020'),
+('33445566000123', '334455667788', 'Soluções TI Avançadas', '6150506060', 'suporte@tiavancadas.com', 'SQS 102', 'Asa Sul', 'Brasília', 5, '70232000'),
+('44556677000134', '445566778899', 'Café & Companhia', '7131314242', 'atendimento@cafecomp.com', 'Av. Sete de Setembro', 'Barra', 'Salvador', 720, '40140000'),
+('55667788000145', '556677889900', 'Papelaria Criativa', '8151516262', 'contato@papelcriativa.com', 'Rua da Aurora', 'Boa Vista', 'Recife', 150, '50050000'),
+('66778899000156', '667788990011', 'Pet Shop Amigo Fiel', '8561617272', 'sac@amigofielpet.com', 'Av. Beira Mar', 'Meireles', 'Fortaleza', 1300, '60165012'),
+('77889900000167', '778899001122', 'Doces & Delícias LTDA', '2171718282', 'contato@docedelicias.com', 'Rua do Mercado', 'Centro', 'Rio de Janeiro', 200, '20010000'),
+('88990011000178', '889900112233', 'Academia Corpo em Forma', '5181819292', 'atendimento@corpofit.com', 'Rua da Praia', 'Centro', 'Porto Alegre', 180, '90010000'),
+('99001122000189', '990011223344', 'Barbearia Estilo Homem', '3191910303', 'contato@estilohomem.com', 'Av. Afonso Pena', 'Centro', 'Belo Horizonte', 900, '30130140'),
+('00112233000190', '001122334455', 'Clínica Médica Vida Plena', '6110101111', 'agendamento@vidaplena.com', 'SQS 308', 'Asa Sul', 'Brasília', 10, '70358000');
+select * from cnpj;
+
+
+-- adicionando produtos
+INSERT INTO produto (idvendedor, categoria, descricao, avaliacao, valor) VALUES
+(1, 'Eletrodomestico', 'Liquidificador 500W Turbo', 4.5, 199.90),
+(2, 'Decoração', 'Quadro abstrato moderno 60x80cm', 4.8, 149.99),
+(3, 'Roupa', 'Camiseta de algodão premium - G', 4.6, 59.90),
+(4, 'Sapato', 'Tênis esportivo ultra leve', 4.7, 229.99),
+(5, 'Kids', 'Boneca interativa com acessórios', 4.3, 89.90),
+(1, 'Bijoterias', 'Colar dourado com pingente de coração', 4.9, 39.90),
+(2, 'Iluminação', 'Luminária LED de mesa com ajuste de brilho', 4.4, 129.90),
+(3, 'Limpeza', 'Aspirador de pó portátil 1200W', 4.5, 349.99),
+(4, 'Decoração', 'Vaso de cerâmica artesanal', 4.7, 79.90),
+(5, 'Eletrodomestico', 'Ferro de passar a vapor', 4.6, 189.90);
+
+select * from produto;
+
+-- adicionando vendedores 
+INSERT INTO vendedor_externo (idcnpj) VALUES
+(1),
+(2),
+(3),
+(4),
+(5);
+
+select * from vendedor_externo;
+
+-- adicionando clientes
+INSERT INTO cliente (idcnpj, idcpf, idvendedor) VALUES
+(12, NULL, 1),
+(15, NULL, 2),
+(10, NULL, 2),
+(8, NULL, 4),
+(19, NULL, 5),
+(NULL, 1, 1),
+(NULL, 2, 1),
+(NULL, 3, 4),
+(NULL, 5, 5),  
+(NULL, 6, 1);
+
+select * from cliente;
+
+-- adicionando fornecedores
+INSERT INTO fornecedor (idcnpj) VALUES
+(7),
+(13),
+(9),
+(10),
+(11),
+(15),
+(16),
+(18),
+(19),
+(20),
+(14),
+(8),
+(13);
+
+select * from fornecedor;
+
+-- adicionando entrega
+INSERT INTO entrega (frete, codigo_rastreio, status_entrega) VALUES
+(19.90, '12345678901ABCDEF12345678901ABCDEF0001', 'Entregue'),
+(25.50, '23456789012ABCDEF12345678901ABCDEF0002', 'Entregue'),
+(32.75, '34567890123ABCDEF12345678901ABCDEF0003', 'Entregue'),
+(15.00, '45678901234ABCDEF12345678901ABCDEF0004', 'Entregue'),
+(40.00, '56789012345ABCDEF12345678901ABCDEF0005', 'A caminho'),
+(18.75, '67890123456ABCDEF12345678901ABCDEF0006', 'Perdido'),
+(29.90, '78901234567ABCDEF12345678901ABCDEF0007', 'Entregue'),
+(22.50, '89012345678ABCDEF12345678901ABCDEF0008', 'Perdido'),
+(35.80, '90123456789ABCDEF12345678901ABCDEF0009', 'Perdido'),
+(27.90, '01234567890ABCDEF12345678901ABCDEF0010', 'Perdido'),
+(20.00, '11223344556ABCDEF12345678901ABCDEF0011', 'A caminho'),
+(28.75, '22334455667ABCDEF12345678901ABCDEF0012', 'A caminho'),
+(31.50, '33445566778ABCDEF12345678901ABCDEF0013', 'A caminho'),
+(26.90, '44556677889ABCDEF12345678901ABCDEF0014', 'Entregue'),
+(45.60, '55667788990ABCDEF12345678901ABCDEF0015', 'Entregue');
+
+-- inserindo pedidos
+INSERT INTO pedido (idcliente, identrega, status_pedido, descricao, formas_pagamento, valor_total) VALUES
+(1, 16, 'Entregue', 'Notebook Gamer - Modelo X', 'Credito', 4999.99),
+(2, 17, 'Enviado', 'Smartphone Ultra HD 128GB', 'PIX', 2999.90),
+(3, 18, 'Em aberto', 'Tênis esportivo Nike Air Max', 'Boleto', 349.99),
+(4, 19, 'Cancelado', 'Conjunto de panelas antiaderentes', 'Debito', 599.90),
+(5, 20, 'Entregue', 'Smart TV 4K 55 polegadas', 'Credito', 3199.99),
+(6, 21, 'Enviado', 'Kit de perfumes importados', 'PIX', 499.90),
+(7, 22, 'Entregue', 'Console PlayStation 5', 'Boleto', 4299.99),
+(8, 23, 'Em aberto', 'Fone de ouvido Bluetooth ANC', 'Debito', 799.90),
+(9, 24, 'Cancelado', 'Cadeira gamer ergonômica', 'Dinheiro', 1299.90),
+(10, 25, 'Enviado', 'Relógio smartwatch com monitor cardíaco', 'Credito', 259.99),
+(8, 26, 'Entregue', 'Máquina de café expresso automática', 'PIX', 1599.90),
+(9, 27, 'Em aberto', 'Aspirador de pó robô inteligente', 'Boleto', 1899.99),
+(10, 28, 'Cancelado', 'Bolsa de couro legítimo feminina', 'Debito', 799.90),
+(4, 29, 'Enviado', 'Kit de maquiagem profissional', 'Dinheiro', 329.90),
+(5, 30, 'Entregue', 'Ventilador de torre com controle remoto', 'Credito', 599.90);
+
+
+-- conectando vendedor a fornecedor 
+INSERT INTO vendedor_has_fornecedor (idfornecedor, idvendedor) VALUES
+(1, 1),   -- Fornecedor 1 fornece para Vendedor 1
+(14, 2),   -- Fornecedor 2 fornece para Vendedor 2
+(12, 2),  -- Fornecedor 5 fornece para Vendedor 2
+(25, 3),  -- Fornecedor 2 fornece para Vendedor 3
+(3, 3),   -- Fornecedor 5 fornece para Vendedor 3
+(16, 4),   -- Fornecedor 5 fornece para Vendedor 4
+(4, 4),  -- Fornecedor 1 fornece para Vendedor 4
+(17, 5),  -- Fornecedor 1 fornece para Vendedor 5
+(5, 5),  -- Fornecedor 1 fornece para Vendedor 5
+(18, 1);  -- Fornecedor 1 fornece para Vendedor 1
+
+
+
+-- conectando estoque a fornecedor e a produto
+INSERT INTO estoque_has_produto (idfornecedor, idproduto, quantidade, status_produto, galpao) VALUES
+(7, 11, 50, 'Em estoque', 'Galpão 1'),  
+(7, 12, 30, 'Em estoque', 'Galpão 2'),  
+(13, 13, 20, 'Em estoque', 'Galpão 3'),  
+(13, 14, 0, 'Falta', 'Galpão 1'),  
+(9, 15, 100, 'Em estoque', 'Galpão 2'),  
+(9, 16, 15, 'Em estoque', 'Galpão 3'),  
+(10, 17, 40, 'Falta', 'Galpão 1'),  
+(10, 18, 60, 'Em estoque', 'Galpão 2'),  
+(11, 19, 10, 'Falta', 'Galpão 3'),  
+(11, 20, 70, 'Em estoque', 'Galpão 1');  
+
+SELECT * from pedido;
+-- conectando pedido a vendedor e a estoque
+INSERT INTO pedido_has_produto (idvendedor, idproduto, idpedido, quantidade) VALUES
+(1, 11, 61, 2),   -- Vendedor 1 vendeu 2 unidades do Produto 1 no Pedido 1
+(1, 12, 62, 1),   -- Vendedor 1 vendeu 1 unidade do Produto 2 no Pedido 2
+(2, 13, 63, 3),   -- Vendedor 2 vendeu 3 unidades do Produto 3 no Pedido 3
+(2, 14, 64, 1),   -- Vendedor 2 vendeu 1 unidade do Produto 4 no Pedido 4
+(3, 15, 65, 52),   -- Vendedor 3 vendeu 5 unidades do Produto 5 no Pedido 5
+(3, 16, 66, 2),   -- Vendedor 3 vendeu 2 unidades do Produto 6 no Pedido 6
+(4, 17, 67, 12),   -- Vendedor 4 vendeu 1 unidade do Produto 7 no Pedido 7
+(4, 18, 68, 4),   -- Vendedor 4 vendeu 4 unidades do Produto 8 no Pedido 8
+(5, 19, 69, 1),   -- Vendedor 5 vendeu 1 unidade do Produto 9 no Pedido 9
+(5, 20, 70, 2), -- Vendedor 5 vendeu 2 unidades do Produto 10 no Pedido 10
+(1, 13, 71, 1),  -- Vendedor 1 vendeu 1 unidade do Produto 3 no Pedido 11
+(2, 16, 72, 35),  -- Vendedor 2 vendeu 3 unidades do Produto 6 no Pedido 12
+(3, 19, 73, 16),  -- Vendedor 3 vendeu 1 unidade do Produto 9 no Pedido 13
+(4, 20, 74, 2),  -- Vendedor 4 vendeu 2 unidades do Produto 2 no Pedido 14
+(5, 15, 74, 37);  -- Vendedor 5 vendeu 3 unidades do Produto 5 no Pedido 15
+
+
+
+
+

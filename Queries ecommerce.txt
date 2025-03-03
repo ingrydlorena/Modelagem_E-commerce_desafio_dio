@@ -1,0 +1,56 @@
+SELECT * FROM pedido_has_produto LIMIT 10;
+
+-- Vendas por quantidade
+SELECT 
+    vendedor_externo.idvendedor,  
+    cnpj.razao_social AS nome_vendedor,
+    SUM(pedido_has_produto.quantidade) AS total_produtos_vendidos
+FROM pedido_has_produto
+JOIN vendedor_externo ON pedido_has_produto.idvendedor = vendedor_externo.idvendedor
+JOIN cnpj ON vendedor_externo.idcnpj = cnpj.idcnpj
+GROUP BY vendedor_externo.idvendedor, nome_vendedor
+ORDER BY total_produtos_vendidos DESC;
+
+-- Vendas por valor
+SELECT
+    vendedor_externo.idvendedor,
+    cnpj.razao_social AS nome_vendedor,
+    SUM(produto.valor * pedido_has_produto.quantidade) AS valor_total_vendido
+FROM pedido_has_produto
+JOIN vendedor_externo ON pedido_has_produto.idvendedor = vendedor_externo.idvendedor
+JOIN cnpj ON vendedor_externo.idcnpj = cnpj.idcnpj
+JOIN produto ON pedido_has_produto.idproduto = produto.idproduto
+GROUP BY vendedor_externo.idvendedor, cnpj.razao_social
+ORDER BY valor_total_vendido DESC;
+
+-- Quantos pedidos foram realizados?
+SELECT 
+    COUNT(*) AS total_pedidos
+FROM pedido;
+
+-- Valor total de pedidos realizados
+SELECT
+	SUM(valor_total) as valor_total_pedidos
+FROM pedido;
+
+-- Existem mais compras em CNPJ ou CPF?
+SELECT
+	COUNT(idcnpj) as total_cnpj, COUNT(idcpf) as total_cpf
+FROM cliente;
+
+-- Qual metodo de pagamento mais usado?
+SELECT 
+    formas_pagamento, 
+    COUNT(*) AS total_pedidos
+FROM pedido
+GROUP BY formas_pagamento;
+
+-- Algum vendedor também é fornecedor?
+SELECT DISTINCT 
+    vendedor_externo.idcnpj, 
+    cnpj.razao_social 
+FROM vendedor_externo
+JOIN fornecedor ON vendedor_externo.idcnpj = fornecedor.idcnpj
+JOIN cnpj ON vendedor_externo.idcnpj = cnpj.idcnpj;
+
+
